@@ -1,0 +1,45 @@
+# BUILD YOUR RAYLIB:
+# Go to raylib/src
+# and run "make" or "cmake -DCMAKE_BUILD_TYPE=Release -DPLATFORM=Desktop .." on CMake after "mkdir build && cd build"
+
+# Replace with the directory where raylib resides
+RAYLIB ?= /home/kiwi/raylib/src
+
+#UNAME_S := $(shell uname -s)
+
+# Do NOT rely on this.
+#ifeq ($(UNAME_S), Linux)
+#	PLATFORM = linux
+#	LDFLAGS = -L$(RAYLIB) -lraylib -lm -ldl -lpthread -lrt -lX11
+#else ifeq ($(UNAME_S), Darwin)
+#	PLATFORM = macos
+#	LDFLAGS = -L$(RAYLIB) -lraylib -framework OpenGL -framework Cocoa
+#else
+#	PLATFORM = windows
+#	LDFLAGS = -L$(RAYLIB) -lraylib -lopengl32 -lgdi32 -lwinmm
+#endif
+
+LDFLAGS = -L$(RAYLIB) -lraylib -lm -ldl -lpthread -lrt -lX11
+
+AS = as
+ASFLAGS = -g -c -I$(RAYLIB)/..
+
+CC = gcc
+CFLAGS = -Wall -g -I$(RAYLIB)/..
+
+TARGET = test
+SRC = main.s
+OBJ = test.o
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET) $(CFLAGS) $(LDFLAGS)
+
+$(OBJ): $(SRC)
+	$(AS) $(ASFLAGS) $(SRC) -o $(OBJ)
+
+clean:
+	rm -f $(OBJ) $(TARGET)
+
+.PHONY: all clean
