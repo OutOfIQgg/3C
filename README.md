@@ -4,7 +4,7 @@ This game was made in raylib using the GNU Assembler (GAS)
 Only works for x86_64 and Linux (I'm gonna work on cross-platfrom, don't you worry)
 This game was mostly to test and use my Assembly knowledge but it grew to this. Expect errors.
 
-# HOW TO BUILD!! (Linux and possibly WSL2 compatible)
+# HOW TO BUILD!! (Linux and POSSIBLY WSL2 and MAYBE MacOS compatible)
 
 1. go to the game directory
 2. make a folder called `build` (`mkdir build`)
