@@ -93,14 +93,14 @@ main:
 	testb %al, %al
 	jnz .Lcleanup
 
-	# Point number display (snprintf)
+	# Point number display (snprintf) (Spoiler: it FAILED and we used TextFormat [provided by raylib])
 
-	leaq cir_points_buf(%rip), %rdi
-	movl $64, %esi
-	leaq cir_points_str(%rip), %rdx
-	movl cir_points(%rip), %r8d
-	xorq %rax, %rax
-	call snprintf@PLT
+	#leaq cir_points_buf(%rip), %rdi
+	#movl $64, %esi
+	#leaq cir_points_str(%rip), %rdx
+	#movl cir_points(%rip), %r8d
+	#xorq %rax, %rax
+	#call snprintf@PLT
 
 	# Dot logic
 
@@ -320,7 +320,11 @@ main:
 	movl $10, %esi
 	call DrawFPS@PLT
 
-	leaq cir_points_buf(%rip), %rdi
+	leaq cir_points_str(%rip), %rdi
+	movl cir_points(%rip), %esi
+	call TextFormat@PLT
+
+	movq %rax, %rdi
 	movl $10, %esi
 	movl $30, %edx
 	movl $26, %ecx
