@@ -1,3 +1,5 @@
+![demo](./demo.gif)
+
 # 3C >> Circle Chasing Circle
 
 This game was made in raylib using the GNU Assembler (GAS)
