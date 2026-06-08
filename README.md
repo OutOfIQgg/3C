@@ -1,4 +1,4 @@
-![demo](./demo.gif)
+![demo](./src/demo.gif)
 
 # 3C >> Circle Chasing Circle
 
